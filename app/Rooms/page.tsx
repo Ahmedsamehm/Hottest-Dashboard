@@ -137,18 +137,17 @@ const rooms: RoomType[] = [
 // Helper function to get badge color based on room status
 const getStatusColor = (status: string) => {
   switch (status) {
-    case "confirmed":
+    case "available":
       return "bg-emerald-100 text-emerald-700 hover:bg-emerald-100";
-    case "pending":
+    case "occupied":
+      return "bg-blue-100 text-blue-700 hover:bg-blue-100";
+    case "maintenance":
       return "bg-amber-100 text-amber-700 hover:bg-amber-100";
-    case "checked-out":
-      return "bg-gray-100 text-gray-600 hover:bg-gray-100";
     default:
       return "bg-gray-100 text-gray-600 hover:bg-gray-100";
   }
 };
 
-// Helper function to get amenity icon
 const getAmenityIcon = (amenity: string) => {
   switch (amenity) {
     case "wifi":
@@ -161,7 +160,6 @@ const getAmenityIcon = (amenity: string) => {
       return null;
   }
 };
-
 // Main Rooms page component
 const Rooms = () => {
   return (

@@ -51,7 +51,7 @@ const Dashboard = () => {
   return (
     <div className="flex flex-col min-h-screen bg-gray-50 ">
       {/* Header Section */}
-      <header className="border-b border-gray-200 bg-white">
+      <header className="border-b border-gray-200 bg-white py-3">
         <div className="flex h-16 items-center gap-4 px-6">
           {/* Sidebar menu trigger */}
           <SidebarTrigger className="text-gray-600 hover:text-gray-900" />
