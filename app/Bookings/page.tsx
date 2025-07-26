@@ -1,5 +1,5 @@
 import React from "react";
-// UI Components
+
 import { SidebarTrigger } from "../components/shared/ui/sidebar";
 import { Calendar, CheckCircle, Clock, DollarSign, Plus } from "lucide-react";
 import { Button } from "../components/shared/ui/button";
@@ -130,7 +130,6 @@ const bookings: Booking[] = [
   },
 ];
 
-// Helper function to get badge color based on booking status
 const getStatusColor = (status: string) => {
   switch (status) {
     case "confirmed":
