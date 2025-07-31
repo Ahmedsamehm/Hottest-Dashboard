@@ -13,7 +13,7 @@ A comprehensive dashboard solution designed to help hotels efficiently track gue
 - **Styling** - Tailwind CSS v4 with shadcn UI components
 - **Architecture** - Clean folder structure for easy scalability and future development
 
-![Dashboard Screenshot](<img width="547" height="231" alt="image" src="https://github.com/user-attachments/assets/b3be2576-66a3-4998-9391-e063e3d9a257" />
-)
+<img width="547" height="231" alt="image" src="https://github.com/user-attachments/assets/b32103e8-746d-4937-a2de-dccef96a8aeb" />
+
 
 *Note: This site is still under development.*
