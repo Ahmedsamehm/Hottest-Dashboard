@@ -11,9 +11,13 @@ A comprehensive dashboard solution designed to help hotels efficiently track gue
 - **Data Management** - React Hook Form, Axios, and React Query for caching and API handling
 - **Visualization** - Recharts for dashboard analytics and reporting
 - **Styling** - Tailwind CSS v4 with shadcn UI components
+- **Database** - Supabase for data storage with full CRUD operations (Create, Read, Update, Delete)
+- **Authentication** - Google OAuth login with role-based access control for database tables
 - **Architecture** - Clean folder structure for easy scalability and future development
 
 <img width="547" height="231" alt="image" src="https://github.com/user-attachments/assets/b32103e8-746d-4937-a2de-dccef96a8aeb" />
 
+
+## you can see demo ui: https://hottest-dashboard.vercel.app/dashBoard 
 
 *Note: This site is still under development.*
