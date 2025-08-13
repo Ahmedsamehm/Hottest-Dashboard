@@ -1,13 +1,14 @@
-<img width="1905" height="1299" alt="dashBoard" src="https://github.com/user-attachments/assets/627da6bf-2bf3-438f-885a-e0f3b4292f0c" />
+# Hotel Management Dashboard – My Fullstack Learning Project
+
+![Dashboard Screenshot](https://github.com/user-attachments/assets/627da6bf-2bf3-438f-885a-e0f3b4292f0c)
+
+**Summary:** Manage hotel bookings, track guest details, and streamline reservations all in one place.
 
 ---
-title: "Introducing Hotel Management Dashboard – My Fullstack Learning Project"
-summary: "Manage hotel bookings, track guest details, and streamline reservations all in one place."
-publishedAt: "2025-08-13"
----
 
-Hey there! I'm excited to share one of my recent side projects: **HottestDashboard**.  
-It’s a fullstack web application that helps hotel staff:
+## 🎯 Overview
+
+**HottestDashboard** is a fullstack web application that helps hotel staff:
 
 - View and manage room bookings
 - Track guests’ check-in and check-out dates
@@ -16,7 +17,7 @@ It’s a fullstack web application that helps hotel staff:
 
 The goal is to make hotel booking management **easier** and **more dynamic** for both staff and guests.
 
-👉 **Demo:** [Demo]((https://hottest-dashboard.vercel.app/dashBoard))
+👉 **Live Demo:** [Hottest Dashboard](https://hottest-dashboard.vercel.app/dashBoard)
 
 ---
 
@@ -32,72 +33,64 @@ This dashboard became my playground to practice:
 
 ---
 
-## 🛠️ The Tech Stack
+## 🛠 Tech Stack
 
-This project uses:
-
-- **Next.js 15** for the frontend and server-side API routes
-- **React 19** with the React Compiler for better performance
-- **UI & Styling** TailwindCSS,Shadcn Ui for fast, responsive UI styling
-- **Supabase** for authentication, database, and real-time data
-- **React Query** + **Axios** for API calls and state management
-- **Context API** for shared global state
+- **Next.js 15** – frontend & server-side API routes
+- **React 19** – with React Compiler for better performance
+- **TailwindCSS** + **Shadcn UI** – fast, responsive UI styling
+- **Supabase** – authentication, database, and real-time data
+- **React Query** + **Axios** – API calls and state management
+- **Context API** – shared global state
 
 ---
 
 ## 🧩 Challenges & Highlights
 
-### 🗄️ Working with Supabase Relationships
+### 🗄️ Supabase Relationships
 
-One of the hardest parts was creating **relations between tables** and joining them to get complete booking details.  
-I used AI as my personal mentor to understand Supabase better and figure out the best way to design my schema.
+Creating **relations between tables** and joining them to get complete booking details was challenging.  
+I used AI as my mentor to understand Supabase better and design my schema effectively.
 
 ### 📝 Code Reviews with AI
 
-After each feature, I reviewed the code with AI to make sure I was following **best practices**.  
+After each feature, I reviewed the code with AI to ensure I was following **best practices**.  
 This helped me improve performance and write cleaner, more maintainable code.
 
 ---
 
 ## 🚀 Key Features
 
-- **Room Management**
+### Room Management
+- Add rooms with: room number, capacity, price, description, room type, floor, and status (available, occupied, maintenance)
+- Track last cleaned date
+- Assign amenities: WiFi, parking, breakfast
 
-  - Add rooms with: room number, capacity, price, description, room type, floor, and status (available, occupied, maintenance)
-  - Track last cleaned date
-  - Assign amenities: WiFi, parking, breakfast
+### Search
+- Global search bar on all pages for quick access to data
 
-- **Search Functionality**
+### Guest Management
+- Add guests with: full name, email, national ID, nationality, phone number, and VIP status
 
-  - Global search bar on all pages for quick access to data
+### Booking Management
+- Create, edit, and delete bookings
+- Set booking period and payment method
+- Track payment status (paid before arrival or on check-in)
 
-- **Guest Management**
-
-  - Add guests with: full name, email, national ID, nationality, phone number, and VIP status
-
-- **Booking Management**
-
-  - Create, edit, and delete bookings
-  - Set booking period and payment method
-  - Track payment status (paid before arrival or on check-in)
-
-- **Dashboard Analytics**
-  - Room status overview
-  - Monthly occupancy trends
-  - Weekly revenue reports
-  - Today's activities summary
+### Dashboard Analytics
+- Room status overview
+- Monthly occupancy trends
+- Weekly revenue reports
+- Today's activities summary
 
 ---
 
 ## 🔮 What’s Next?
 
-Planned improvements:
-
-- AI assistant for admins to manage bookings and generate more accurate analytics
-- Public booking website for users to reserve rooms, select stay dates, and choose additional services
-- Role-based access control for staff
+- AI assistant for admins to manage bookings and generate more accurate analytics  
+- Public booking website for users to reserve rooms, select stay dates, and choose additional services  
+- Role-based access control for staff  
 
 ---
 
 Thanks for reading!  
-This project was a big step in my journey to mastering fullstack development, and it gave me a real-world scenario to work on while learning new tools.
+This project was a big step in my journey to mastering fullstack development and working on a real-world scenario while learning new tools.
