@@ -67,24 +67,24 @@ This helped me improve performance and write cleaner, more maintainable code.
 
 
 ## 📂 Project Structure
-📁 (Pages)/
- ├── 📁 Bookings/
- │    ├── 📁 _components/
- │    ├── 📁 _hooks/
- │    ├── 📁 _services/
- │    ├── 📁 _types/
- │    ├── layout.tsx
- │    └── page.tsx
- ├── 📁 Guests/
- ├── 📁 Rooms/
- └── 📁 dashBoard/
-📁 Types/ 
-📁 apis/
-📁 components/ **sharedComponent** 
-📁 context/
-🎨 globals.css
-📄 layout.tsx
-📄 page.tsx
+  📁 (Pages)/
+   ├── 📁 Bookings/
+   │    ├── 📁 _components/
+   │    ├── 📁 _hooks/
+   │    ├── 📁 _services/
+   │    ├── 📁 _types/
+   │    ├── layout.tsx
+   │    └── page.tsx
+   ├── 📁 Guests/
+   ├── 📁 Rooms/
+   └── 📁 dashBoard/
+  📁 Types/ 
+  📁 apis/
+  📁 components/ **sharedComponent** 
+  📁 context/
+  🎨 globals.css
+  📄 layout.tsx
+  📄 page.tsx
 
 ### Search
 - Global search bar on all pages for quick access to data
