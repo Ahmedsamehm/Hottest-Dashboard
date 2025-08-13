@@ -65,8 +65,25 @@ This helped me improve performance and write cleaner, more maintainable code.
 - Track last cleaned date
 - Assign amenities: WiFi, parking, breakfast
 
+### Search
+- Global search bar on all pages for quick access to data
 
-## 📂 Project Structure
+### Guest Management
+- Add guests with: full name, email, national ID, nationality, phone number, and VIP status
+
+### Booking Management
+- Create, edit, and delete bookings
+- Set booking period and payment method
+- Track payment status (paid before arrival or on check-in)
+
+### Dashboard Analytics
+- Room status overview
+- Monthly occupancy trends
+- Weekly revenue reports
+- Today's activities summary
+ 
+---
+## 📂 Folder Structure
 ```
 📁 Pages/
 ├── 📁 Bookings/
@@ -89,26 +106,6 @@ This helped me improve performance and write cleaner, more maintainable code.
 📄 layout.tsx
 📄 page.tsx
 ```
-
-### Search
-- Global search bar on all pages for quick access to data
-
-### Guest Management
-- Add guests with: full name, email, national ID, nationality, phone number, and VIP status
-
-### Booking Management
-- Create, edit, and delete bookings
-- Set booking period and payment method
-- Track payment status (paid before arrival or on check-in)
-
-### Dashboard Analytics
-- Room status overview
-- Monthly occupancy trends
-- Weekly revenue reports
-- Today's activities summary
-
----
-
 ## 🔮 What’s Next?
 
 - AI assistant for admins to manage bookings and generate more accurate analytics  
