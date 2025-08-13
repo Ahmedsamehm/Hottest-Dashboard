@@ -1,23 +1,103 @@
-**"This site is still under development."**
+<img width="1905" height="1299" alt="dashBoard" src="https://github.com/user-attachments/assets/627da6bf-2bf3-438f-885a-e0f3b4292f0c" />
 
-## Hotel Management Dashboard
+---
+title: "Introducing Hotel Management Dashboard – My Fullstack Learning Project"
+summary: "Manage hotel bookings, track guest details, and streamline reservations all in one place."
+publishedAt: "2025-08-13"
+---
 
-A comprehensive dashboard solution designed to help hotels efficiently track guest activities and manage operations. The system monitors check-ins, check-outs, pending reservations, meal preferences (lunch or pie orders), and VIP guest status. The admin dashboard provides valuable analytics including daily/monthly booking statistics and revenue tracking to help management understand performance trends.
+Hey there! I'm excited to share one of my recent side projects: **HottestDashboard**.  
+It’s a fullstack web application that helps hotel staff:
 
-### Technologies Used
+- View and manage room bookings
+- Track guests’ check-in and check-out dates
+- Mark guests as VIP or regular
+- Record payment status and extra services like meals
 
-- **Next.js 15** - Latest version with API routes, middleware, and image optimization
-- **React 19** - Modern React features and hooks
-- **Data Management** - React Hook Form, Axios, and React Query for caching and API handling
-- **Visualization** - Recharts for dashboard analytics and reporting
-- **Styling** - Tailwind CSS v4 with shadcn UI components
-- **Database** - Supabase for data storage with full CRUD operations (Create, Read, Update, Delete)
-- **Authentication** - Google OAuth login with role-based access control for database tables
-- **Architecture** - Clean folder structure for easy scalability and future development
+The goal is to make hotel booking management **easier** and **more dynamic** for both staff and guests.
 
-<img width="547" height="231" alt="image" src="https://github.com/user-attachments/assets/b32103e8-746d-4937-a2de-dccef96a8aeb" />
+👉 **Demo:** [Demo]((https://hottest-dashboard.vercel.app/dashBoard))
 
+---
 
-## you can see demo ui: https://hottest-dashboard.vercel.app/dashBoard 
+## 🧪 Why This Project?
 
-*Note: This site is still under development.*
+I wanted to learn how to build a fullstack app with **Next.js**, **React**, **TailwindCSS**, and **Supabase**.  
+This dashboard became my playground to practice:
+
+- Building APIs with Next.js (server-side)
+- Storing and retrieving data from Supabase
+- Managing relationships between database tables
+- Handling bookings dynamically with real-time updates
+
+---
+
+## 🛠️ The Tech Stack
+
+This project uses:
+
+- **Next.js 15** for the frontend and server-side API routes
+- **React 19** with the React Compiler for better performance
+- **UI & Styling** TailwindCSS,Shadcn Ui for fast, responsive UI styling
+- **Supabase** for authentication, database, and real-time data
+- **React Query** + **Axios** for API calls and state management
+- **Context API** for shared global state
+
+---
+
+## 🧩 Challenges & Highlights
+
+### 🗄️ Working with Supabase Relationships
+
+One of the hardest parts was creating **relations between tables** and joining them to get complete booking details.  
+I used AI as my personal mentor to understand Supabase better and figure out the best way to design my schema.
+
+### 📝 Code Reviews with AI
+
+After each feature, I reviewed the code with AI to make sure I was following **best practices**.  
+This helped me improve performance and write cleaner, more maintainable code.
+
+---
+
+## 🚀 Key Features
+
+- **Room Management**
+
+  - Add rooms with: room number, capacity, price, description, room type, floor, and status (available, occupied, maintenance)
+  - Track last cleaned date
+  - Assign amenities: WiFi, parking, breakfast
+
+- **Search Functionality**
+
+  - Global search bar on all pages for quick access to data
+
+- **Guest Management**
+
+  - Add guests with: full name, email, national ID, nationality, phone number, and VIP status
+
+- **Booking Management**
+
+  - Create, edit, and delete bookings
+  - Set booking period and payment method
+  - Track payment status (paid before arrival or on check-in)
+
+- **Dashboard Analytics**
+  - Room status overview
+  - Monthly occupancy trends
+  - Weekly revenue reports
+  - Today's activities summary
+
+---
+
+## 🔮 What’s Next?
+
+Planned improvements:
+
+- AI assistant for admins to manage bookings and generate more accurate analytics
+- Public booking website for users to reserve rooms, select stay dates, and choose additional services
+- Role-based access control for staff
+
+---
+
+Thanks for reading!  
+This project was a big step in my journey to mastering fullstack development, and it gave me a real-world scenario to work on while learning new tools.
