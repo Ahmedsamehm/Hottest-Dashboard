@@ -67,14 +67,15 @@ This helped me improve performance and write cleaner, more maintainable code.
 
 
 ## 📂 Project Structure
+```
 📁 Pages/
 ├── 📁 Bookings/
-│   ├── 📁 _components/
-│   ├── 📁 _hooks/
-│   ├── 📁 _services/
-│   ├── 📁 _types/
-│   ├── layout.tsx
-│   └── page.tsx
+│ ├── 📁 _components/
+│ ├── 📁 _hooks/
+│ ├── 📁 _services/
+│ ├── 📁 _types/
+│ ├── layout.tsx
+│ └── page.tsx
 ├── 📁 Guests/
 ├── 📁 Rooms/
 └── 📁 dashBoard/
@@ -82,12 +83,12 @@ This helped me improve performance and write cleaner, more maintainable code.
 📁 Types/
 📁 apis/
 📁 components/
-    └── sharedComponent/
+└── sharedComponent/
 📁 context/
 🎨 globals.css
 📄 layout.tsx
 📄 page.tsx
-
+```
 
 ### Search
 - Global search bar on all pages for quick access to data
