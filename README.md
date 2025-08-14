@@ -15,7 +15,7 @@
 - Mark guests as VIP or regular
 - Record payment status and extra services like meals
 
-The goal is to make hotel booking management **easier** and **more dynamic** for both staff and guests.
+The goal is to make hotel booking management **easier** and **more dynamic** for  staff 
 
 👉 **Live Demo:** [Hottest Dashboard](https://hottest-dashboard.vercel.app/dashBoard)
 
