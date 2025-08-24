@@ -8,7 +8,7 @@ import { DashBoardProvider } from "./context/dashBoardContext";
 import { Toaster } from "./components/shared/ui/sonner";
 import { ThemeProvider } from "./components/ThemeProvider";
 import ProtectedRoutes from "./components/protectedRoutes";
-
+import { SpeedInsights } from "@vercel/speed-insights/next";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -40,7 +40,10 @@ export default function RootLayout({
                   <SideBar />
                 </aside>
                 <main className="flex-1 overflow-hidden">
-                  <DashBoardProvider>{children}</DashBoardProvider>
+                  <DashBoardProvider>
+                    {children}
+                    <SpeedInsights />
+                  </DashBoardProvider>
                 </main>
                 <Toaster />
               </SidebarProvider>
