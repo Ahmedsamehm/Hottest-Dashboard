@@ -1,0 +1,6 @@
+[
+  { "value": " ", "label": "All Status" },
+  { "value": "available", "label": "available" },
+  { "value": "occupied", "label": "occupied" },
+  { "value": "maintenance", "label": "maintenance" }
+]

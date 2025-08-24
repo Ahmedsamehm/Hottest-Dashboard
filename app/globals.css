@@ -1,5 +1,8 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+/* Smooth theme transition */
+
+@custom-variant light (&:is(.light *));
 
 @custom-variant dark (&:is(.dark *));
 

@@ -1,0 +1,5 @@
+[
+  { "value": " ", "label": "All Status" },
+  { "value": "vip", "label": "VIP" },
+  { "value": "regular", "label": "Regular" }
+]

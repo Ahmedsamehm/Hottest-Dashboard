@@ -10,18 +10,19 @@ type Props = {
 };
 const TableMenu = ({ TableHeadTitles, tableDescription, tableName, children }: Props) => {
   return (
-    <Card className="border-gray-200 shadow-sm bg-white">
-      <CardHeader className="pb-4">
-        <CardTitle className="text-lg font-semibold text-gray-900">{tableName}</CardTitle>
-        <CardDescription className="text-gray-500">{tableDescription}</CardDescription>
+    <Card className="border-gray-300    max-h-[50vh] overflow-y-auto">
+      <CardHeader className="pb-4 ">
+        <CardTitle className="text-lg font-semibold ">{tableName}</CardTitle>
+        <CardDescription className="">{tableDescription}</CardDescription>
       </CardHeader>
       <CardContent>
         <Table>
           <TableHeader>
-            <TableRow className="border-gray-200">
+            {/* Table header */}
+            <TableRow className="border-gray-300 rounded-sm capitalize ">
               {TableHeadTitles?.map((title: string, index: number) => {
                 return (
-                  <TableHead key={index} className="text-gray-600 font-medium">
+                  <TableHead key={index} className=" font-medium">
                     {title}
                   </TableHead>
                 );

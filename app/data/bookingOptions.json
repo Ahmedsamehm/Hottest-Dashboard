@@ -1,0 +1,6 @@
+[
+  { "value": " ", "label": "All Status" },
+  { "value": "confirmed", "label": "Confirmed" },
+  { "value": "pending", "label": "Pending" },
+  { "value": "checked-out", "label": "Checked Out" }
+]
