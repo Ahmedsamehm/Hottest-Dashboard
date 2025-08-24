@@ -16,7 +16,7 @@ const CardRoom = ({ Rooms }) => {
 
   return (
     <section>
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 mx-auto  max-h-[70vh] overflow-y-auto  ">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 mx-auto  max-h-[70vh] overflow-y-auto  ">
         {Rooms?.map((room: RoomType) => (
           <Card key={room.id} className=" light:border-gray-300 ">
             <CardHeader className="pb-4">
