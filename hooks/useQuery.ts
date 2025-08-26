@@ -115,7 +115,7 @@ export const useDeleteData = ({ mutationKey, deleteFun, queryKey, tableName, mes
     reset: resetDelete,
   } = useMutation({
     mutationKey: [mutationKey],
-    mutationFn: (id: number) => deleteFun({ id, tableName }),
+    mutationFn: (id: number) => deleteFun({ tableName, id }),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [queryKey] });
       toast.success(message.onSuccessDelete);

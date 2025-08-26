@@ -16,6 +16,7 @@ interface BookingTableProps {
 }
 
 const BookingTable: React.FC<BookingTableProps> = ({ bookings, isLoading }) => {
+  "use memo";
   const TableHeadTitles = ["BookingID", "Guest", "Contact", "Room", "Check-in", "Check-out", "Nights", "Amount", "Status", "Actions"];
 
   const { getStatusColor } = useDashBoard();

@@ -34,6 +34,8 @@ export const GetAllData = async <T>({ tableName, page, pageSize, search, filter 
 };
 
 export const DeleteData = async ({ tableName, id }: Props<any>): Promise<void> => {
+
+
   try {
     const { data } = await axios.delete<void>(`/apis/${tableName}`, {
       data: { id },

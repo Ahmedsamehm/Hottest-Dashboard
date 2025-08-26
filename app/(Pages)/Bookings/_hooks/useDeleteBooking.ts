@@ -7,6 +7,7 @@ const useDeleteBooking = () => {
     deleteFun: (id: number) => DeleteData(id, "Booking"),
     queryKey: "Booking",
     tableName: "Booking",
+    message: { onSuccessDelete: "Booking deleted successfully" },
   });
   return { deleteItem, isDeleting };
 };

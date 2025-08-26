@@ -39,31 +39,62 @@ exports.__esModule = true;
 exports.AddData = exports.UpdateData = exports.DeleteData = exports.GetAllData = void 0;
 var axios_1 = require("axios");
 exports.GetAllData = function (_a) {
-    var tableName = _a.tableName;
+    var tableName = _a.tableName, page = _a.page, pageSize = _a.pageSize, search = _a.search, filter = _a.filter;
     return __awaiter(void 0, void 0, Promise, function () {
-        var data;
-        return __generator(this, function (_b) {
-            switch (_b.label) {
-                case 0: return [4 /*yield*/, axios_1["default"].get("/apis/" + tableName)];
+        var data, data, data, e_1, message;
+        var _b, _c;
+        return __generator(this, function (_d) {
+            switch (_d.label) {
+                case 0:
+                    _d.trys.push([0, 7, , 8]);
+                    if (!(page && pageSize && page > 0 && pageSize > 0 && filter === "")) return [3 /*break*/, 2];
+                    return [4 /*yield*/, axios_1["default"].get("/apis/" + tableName + "?page=" + page + "&pageSize=" + pageSize + "&search=" + search)];
                 case 1:
-                    data = (_b.sent()).data;
+                    data = (_d.sent()).data;
                     return [2 /*return*/, data !== null && data !== void 0 ? data : []];
+                case 2:
+                    if (!filter) return [3 /*break*/, 4];
+                    return [4 /*yield*/, axios_1["default"].get("/apis/" + tableName + "?page=" + page + "&pageSize=" + pageSize + "?&filter=" + filter)];
+                case 3:
+                    data = (_d.sent()).data;
+                    console.log(data);
+                    return [2 /*return*/, data !== null && data !== void 0 ? data : []];
+                case 4:
+                    if (!tableName) return [3 /*break*/, 6];
+                    return [4 /*yield*/, axios_1["default"].get("/apis/" + tableName)];
+                case 5:
+                    data = (_d.sent()).data;
+                    return [2 /*return*/, data !== null && data !== void 0 ? data : []];
+                case 6: return [3 /*break*/, 8];
+                case 7:
+                    e_1 = _d.sent();
+                    message = ((_c = (_b = e_1 === null || e_1 === void 0 ? void 0 : e_1.response) === null || _b === void 0 ? void 0 : _b.data) === null || _c === void 0 ? void 0 : _c.error) || (e_1 === null || e_1 === void 0 ? void 0 : e_1.message) || "Failed to get record";
+                    throw new Error(message);
+                case 8: return [2 /*return*/];
             }
         });
     });
 };
-exports.DeleteData = function (id, _a) {
-    var tableName = _a.tableName;
+exports.DeleteData = function (_a) {
+    var tableName = _a.tableName, id = _a.id;
     return __awaiter(void 0, void 0, Promise, function () {
-        var data;
-        return __generator(this, function (_b) {
-            switch (_b.label) {
-                case 0: return [4 /*yield*/, axios_1["default"]["delete"]("/apis/" + tableName, {
-                        data: { id: id }
-                    })];
+        var data, e_2, message;
+        var _b, _c;
+        return __generator(this, function (_d) {
+            switch (_d.label) {
+                case 0:
+                    _d.trys.push([0, 2, , 3]);
+                    return [4 /*yield*/, axios_1["default"]["delete"]("/apis/" + tableName, {
+                            data: { id: id }
+                        })];
                 case 1:
-                    data = (_b.sent()).data;
+                    data = (_d.sent()).data;
                     return [2 /*return*/, data];
+                case 2:
+                    e_2 = _d.sent();
+                    message = ((_c = (_b = e_2 === null || e_2 === void 0 ? void 0 : e_2.response) === null || _b === void 0 ? void 0 : _b.data) === null || _c === void 0 ? void 0 : _c.error) || (e_2 === null || e_2 === void 0 ? void 0 : e_2.message) || "Failed to delete record";
+                    throw new Error(message);
+                case 3: return [2 /*return*/];
             }
         });
     });
@@ -71,14 +102,21 @@ exports.DeleteData = function (id, _a) {
 exports.UpdateData = function (_a) {
     var tableName = _a.tableName, id = _a.id, formData = _a.formData;
     return __awaiter(void 0, void 0, Promise, function () {
-        var data;
-        return __generator(this, function (_b) {
-            switch (_b.label) {
-                case 0: return [4 /*yield*/, axios_1["default"].put("/apis/" + tableName + "/", { id: id, formData: formData })];
+        var data, e_3, message;
+        var _b, _c;
+        return __generator(this, function (_d) {
+            switch (_d.label) {
+                case 0:
+                    _d.trys.push([0, 2, , 3]);
+                    return [4 /*yield*/, axios_1["default"].put("/apis/" + tableName, { id: id, formData: formData })];
                 case 1:
-                    data = (_b.sent()).data;
-                    console.log(data);
+                    data = (_d.sent()).data;
                     return [2 /*return*/, data !== null && data !== void 0 ? data : []];
+                case 2:
+                    e_3 = _d.sent();
+                    message = ((_c = (_b = e_3 === null || e_3 === void 0 ? void 0 : e_3.response) === null || _b === void 0 ? void 0 : _b.data) === null || _c === void 0 ? void 0 : _c.error) || (e_3 === null || e_3 === void 0 ? void 0 : e_3.message) || "Failed to update record";
+                    throw new Error(message);
+                case 3: return [2 /*return*/];
             }
         });
     });
@@ -86,13 +124,21 @@ exports.UpdateData = function (_a) {
 exports.AddData = function (_a) {
     var tableName = _a.tableName, formData = _a.formData;
     return __awaiter(void 0, void 0, Promise, function () {
-        var data;
-        return __generator(this, function (_b) {
-            switch (_b.label) {
-                case 0: return [4 /*yield*/, axios_1["default"].post("/apis/" + tableName, { formData: formData })];
+        var data, e_4, message;
+        var _b, _c;
+        return __generator(this, function (_d) {
+            switch (_d.label) {
+                case 0:
+                    _d.trys.push([0, 2, , 3]);
+                    return [4 /*yield*/, axios_1["default"].post("/apis/" + tableName, { formData: formData })];
                 case 1:
-                    data = (_b.sent()).data;
+                    data = (_d.sent()).data;
                     return [2 /*return*/, data !== null && data !== void 0 ? data : []];
+                case 2:
+                    e_4 = _d.sent();
+                    message = ((_c = (_b = e_4 === null || e_4 === void 0 ? void 0 : e_4.response) === null || _b === void 0 ? void 0 : _b.data) === null || _c === void 0 ? void 0 : _c.error) || (e_4 === null || e_4 === void 0 ? void 0 : e_4.message) || "Failed to add record";
+                    throw new Error(message);
+                case 3: return [2 /*return*/];
             }
         });
     });

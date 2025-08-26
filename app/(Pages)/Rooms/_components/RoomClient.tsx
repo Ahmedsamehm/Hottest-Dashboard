@@ -25,7 +25,7 @@ const RoomClient = () => {
 
   const { filter, debouncedSearch } = useDashBoard();
   const { page, pageSize } = usePagination();
-  const { Rooms, isLoading, getAvailableRooms, getOccupiedRooms, total, getAvgRate } = useFetchRooms(page, pageSize, debouncedSearch, filter);
+  const { Rooms, isLoading, getAvailableRooms, getOccupiedRooms, total, getAvgRate, isPending } = useFetchRooms(page, pageSize, debouncedSearch, filter);
 
   // Define stats cards data
   const stats: Stat[] = [
@@ -36,7 +36,7 @@ const RoomClient = () => {
   ];
 
   // Show loading state while data is being fetched
-  if (isLoading) return <Loading />;
+  // if (isLoading) return <Loading />;
 
   return (
     <>
@@ -52,7 +52,7 @@ const RoomClient = () => {
         <StatsCards stats={stats} />
         <SearchAndFilter filterOptions={roomOptions} placeholder="Search by room name" type="text" />
 
-        <CardRoom Rooms={Rooms?.data || []} />
+        <CardRoom Rooms={Rooms?.data || []} isPending={isPending} />
         {/* <CardRoom /> */}
         <PaginationComponent fetchAction={Rooms} />
       </div>

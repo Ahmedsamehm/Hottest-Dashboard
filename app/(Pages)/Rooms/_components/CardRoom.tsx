@@ -8,12 +8,14 @@ import { RoomType } from "../_types/types";
 import { Badge } from "@/app/components/shared/ui/badge";
 import useDeleteRoom from "../_hooks/useDeleteRoom";
 import { DropDownMenu } from "@/app/components/DropDownMenu";
+import SkeletonComponent from "@/app/components/SkeletonComponent";
 
-const CardRoom = ({ Rooms }) => {
+const CardRoom = ({ Rooms, isPending }) => {
   "use memo";
   const { getStatusColor, getAmenityIcon } = useDashBoard();
   const { deleteItem, isDeleting } = useDeleteRoom();
 
+  if (isPending) return <SkeletonComponent />
   return (
     <section>
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 mx-auto  max-h-[70vh] overflow-y-auto  ">

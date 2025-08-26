@@ -63,8 +63,8 @@ const BookingForm = ({ control, register, selected }: { control: any; register: 
   const { Guests } = useFetchGuests();
   const { availableRooms, availableRoomsLoading, availableRoomsPending } = useAvailableRooms();
 
-  console.log(selected);
-  
+
+
   const ChooseGuest = (value: string) => {
     if (!value) return "Choose Guest";
     return (Guests as any)?.data?.find((g: any) => g.id === Number(value))?.fullName || "Choose Guest";
@@ -117,7 +117,7 @@ const BookingForm = ({ control, register, selected }: { control: any; register: 
                   <Controller
                     name="guestId"
                     control={control}
-                    defaultValue={selected?.guestId ?.toString() || ""}
+                    defaultValue={selected?.guestId?.toString() || ""}
                     disabled={availableRoomsLoading || availableRoomsPending}
                     render={({ field: f }) => (
                       <Select onValueChange={f.onChange} value={f.value?.toString()}>

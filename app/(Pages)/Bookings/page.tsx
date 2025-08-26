@@ -1,7 +1,8 @@
-import BookingClientExample from "./_components/BookingClient";
+import BookingClient from "./_components/BookingClient";
+
 
 const Bookings = () => {
-  return <BookingClientExample />;
+  return <BookingClient />;
 };
 
 export default Bookings;

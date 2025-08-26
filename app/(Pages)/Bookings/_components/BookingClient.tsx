@@ -14,12 +14,13 @@ import usePagination from "@/app/components/usePagination";
 
 // Data and Types
 import bookingOptions from "@/app/data/bookingOptions.json";
-import { BookingResponse } from "../_types/types";
+
 import FormComponent from "./formComponent";
 import { useDashBoard } from "@/app/context/dashBoardContext";
 import BookingTable from "./BookingTable";
 
 const BookingClient = () => {
+  "use memo";
   const { filter, debouncedSearch } = useDashBoard();
 
   const { page, pageSize } = usePagination();
@@ -66,7 +67,7 @@ const BookingClient = () => {
         <StatsCards stats={stats} />
         <SearchAndFilter filterOptions={bookingOptions} placeholder="Search by guest name" type="text" />
 
-        <BookingTable bookings={(bookings as any)?.data ?? []} isLoading={isPending} />
+        <BookingTable bookings={bookings?.data ?? []} isLoading={isPending} />
 
         <PaginationComponent fetchAction={bookings} />
       </div>

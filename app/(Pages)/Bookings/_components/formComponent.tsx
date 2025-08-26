@@ -10,9 +10,10 @@ import useAddBooking from "../_hooks/useAddBooking";
 import BookingForm from "./BookingForm";
 
 const FormComponent = () => {
+
   const { bookings } = useFetchAllBookings();
   const { isUpdating, update } = useUpdateBooking();
-  const { isEdit, editId: id , setOpen } = useDashBoard();
+  const { isEdit, editId: id, setOpen } = useDashBoard();
   const { AddRoom, isAdding } = useAddBooking();
   const selected = bookings?.data?.find((booking: BookingResponse) => booking?.id === Number(id)) || null;
   const { register, control, handleSubmit, reset } = useForm<BookingResponse>();
@@ -29,10 +30,10 @@ const FormComponent = () => {
     if (isEdit && id) {
       const updatedFields = Object.fromEntries(Object.entries(formData).filter(([key, value]) => value !== (selected as any)[key]));
       update({ id, formData: updatedFields, tableName: "Booking" });
-          setOpen(false);
+      setOpen(false);
     } else {
       AddRoom({ formData });
-         setOpen(false);
+      setOpen(false);
     }
   };
 

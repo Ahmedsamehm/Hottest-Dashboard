@@ -15,7 +15,7 @@ interface RoomsFormProps {
 }
 
 export const RoomsForm = ({ control, register, Rooms, editId }: RoomsFormProps) => {
-  "use memo";
+
   // Get selected room data once
   const roomData = Rooms?.find((room: any) => room?.id === editId);
 
