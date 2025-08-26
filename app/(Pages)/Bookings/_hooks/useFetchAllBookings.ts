@@ -1,9 +1,10 @@
 import { useGetData } from "@/hooks/useQuery";
-import { GetAllBookings } from "../_services/bookingService";
+
 import { BookingResponse } from "../_types/types";
 import useCalculation from "@/hooks/useCalculation";
 import { useQueryClient } from "@tanstack/react-query";
 import { useEffect } from "react";
+import { GetAllData } from "@/hooks/crudService";
 
 const useFetchAllBookings = (page?: number, pageSize?: number, search?: string, filter?: string) => {
   const queryClient = useQueryClient();
@@ -28,14 +29,16 @@ const useFetchAllBookings = (page?: number, pageSize?: number, search?: string, 
     isPending,
   } = useGetData<BookingResponse[]>({
     queryKey,
-    getFun: () => GetAllBookings(page, pageSize, search, filter),
+    getFun: () => GetAllData({ tableName: "Booking", page, pageSize, search, filter }),
     page,
     search,
+    tableName: "Booking",
   });
+
   useEffect(() => {
     queryClient.prefetchQuery({
       queryKey: prefetchKey,
-      queryFn: () => GetAllBookings(page + 1, pageSize, search),
+      queryFn: () => GetAllData({ tableName: "Booking", page: page + 1, pageSize, search, filter }),
     });
   }, [page, queryClient]);
 

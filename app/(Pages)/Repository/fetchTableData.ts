@@ -10,9 +10,18 @@ type Props = {
 const fetchTableData = async ({ page, pageSize, tableName, search, filter }: Props) => {
   try {
     const supabase = await createClient();
-    let query = supabase.from(tableName).select(`*`, { count: "exact" }).order("id", { ascending: true });
 
-    if (search) {
+    // Base query
+    let query;
+
+    if (tableName === "Booking") {
+      query = supabase.from("Booking").select(`*, guest:Guests(fullName, email, phone)`, { count: "exact" }).order("id", { ascending: true });
+    } else {
+      query = supabase.from(tableName).select(`*`, { count: "exact" }).order("id", { ascending: true });
+    }
+
+    // search
+    if (search && search.trim() !== "") {
       if (!isNaN(Number(search))) {
         query = query.eq("id", Number(search));
       } else {
@@ -20,6 +29,7 @@ const fetchTableData = async ({ page, pageSize, tableName, search, filter }: Pro
       }
     }
 
+    // filter
     if (tableName === "Guests") {
       if (filter === "vip") {
         query = query.eq("vip", true);
@@ -27,11 +37,12 @@ const fetchTableData = async ({ page, pageSize, tableName, search, filter }: Pro
         query = query.eq("vip", false);
       }
     } else {
-      if (filter) {
+      if (filter && filter.trim() !== "") {
         query = query.eq("status", filter);
       }
     }
 
+    // pagination
     if (page && pageSize && page > 0 && pageSize > 0) {
       const from = (page - 1) * pageSize;
       const to = from + pageSize - 1;
@@ -39,11 +50,18 @@ const fetchTableData = async ({ page, pageSize, tableName, search, filter }: Pro
     }
 
     const { data, error, count } = await query;
-    if (error) throw new Error(error.message);
+
+    if (error) {
+      throw new Error(error.message);
+    }
 
     return { data: data ?? [], error: null, count: count ?? 0 };
-  } catch (error) {
-    throw new Error("Error fetching table data");
+  } catch (err: any) {
+    return {
+      data: [],
+      error: err.message || "Unexpected error occurred",
+      count: 0,
+    };
   }
 };
 

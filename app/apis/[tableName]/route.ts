@@ -5,11 +5,13 @@ import { NextResponse } from "next/server";
 const ALLOWED = new Set(["Rooms", "Guests", "Booking"]);
 
 export async function GET(req: Request, { params }: any) {
-  const { tableName } = params;
+  const { tableName } = await params;
   if (!ALLOWED.has(tableName)) {
     return NextResponse.json({ error: "Forbidden table" }, { status: 403 });
   }
+
   const { searchParams } = new URL(req.url);
+
   const page = Number(searchParams.get("page"));
 
   const pageSize = Number(searchParams.get("pageSize"));

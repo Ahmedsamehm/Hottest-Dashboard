@@ -12,14 +12,12 @@ type Props<T> = {
 export const GetAllData = async <T>({ tableName, page, pageSize, search, filter }: Props<T>): Promise<any> => {
   try {
     if (page && pageSize && page > 0 && pageSize > 0 && filter === "") {
-      const { data } = await axios.get<T[]>(`/apis/${tableName}?page=${page}&pageSize=${pageSize}&search=${search}`);
+      const { data } = await axios.get<T[]>(`/apis/${tableName}?page=${page}&pageSize=${pageSize}&search=${search ?? ""}&filter=`);
       return data ?? [];
     }
 
-    if (filter) {
-      const { data } = await axios.get<T[]>(`/apis/${tableName}?page=${page}&pageSize=${pageSize}?&filter=${filter}`);
-      console.log(data);
-
+    if (filter && page && pageSize) {
+      const { data } = await axios.get<T[]>(`/apis/${tableName}?page=${page}&pageSize=${pageSize}&filter=${filter}&search=${search ?? ""}`);
       return data ?? [];
     }
 
@@ -34,8 +32,6 @@ export const GetAllData = async <T>({ tableName, page, pageSize, search, filter 
 };
 
 export const DeleteData = async ({ tableName, id }: Props<any>): Promise<void> => {
-
-
   try {
     const { data } = await axios.delete<void>(`/apis/${tableName}`, {
       data: { id },

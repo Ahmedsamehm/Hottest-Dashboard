@@ -45,7 +45,9 @@ const StatsCards = ({ stats }: { stats: Stat[] }) => {
             </div>
             <div className="space-y-1">
               <p className="text-sm font-medium text-muted-foreground">{stat.title}</p>
-              <p className="text-2xl font-bold text-foreground">{stat.value}</p>
+              <p className="text-2xl font-bold text-foreground">
+                {Math.floor(stat?.value as number)}
+              </p>
               {stat.subtitle && <p className="text-xs text-muted-foreground">{stat.subtitle}</p>}
             </div>
           </CardContent>

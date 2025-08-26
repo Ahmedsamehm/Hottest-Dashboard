@@ -35,6 +35,8 @@ const GuestsClient = () => {
   const { page, pageSize } = usePagination();
   const { Guests, total, isVip, isPending } = useFetchGuests(page, pageSize, debouncedSearch, filter);
 
+
+
   const stats = [
     {
       title: "Total Guests",

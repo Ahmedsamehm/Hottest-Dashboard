@@ -25,7 +25,11 @@ const useFetchGuests = (page?: number, pageSize?: number, search?: string, filte
     prefetchKey = ["Guests"];
   }
 
-  const { data: Guests, isLoading ,isPending} = useGetData<GuestType[]>({
+  const {
+    data: Guests,
+    isLoading,
+    isPending,
+  } = useGetData<GuestType[]>({
     queryKey,
     getFun: () => GetAllData({ tableName: "Guests", page, pageSize, search, filter }),
     tableName: "Guests",
@@ -35,11 +39,7 @@ const useFetchGuests = (page?: number, pageSize?: number, search?: string, filte
     if (page != null) {
       queryClient.prefetchQuery({
         queryKey: prefetchKey,
-        queryFn: () =>
-          GetAllData({
-            tableName: "Guests",
-            page: page + 1,
-          }),
+        queryFn: () => GetAllData({ tableName: "Guests", page: page + 1, pageSize, search, filter }),
       });
     }
   }, [page, queryClient]);

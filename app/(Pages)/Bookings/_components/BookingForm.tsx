@@ -60,6 +60,7 @@ const formLabel: FormLabel[] = [
 ];
 
 const BookingForm = ({ control, register, selected }: { control: any; register: any; selected?: BookingResponse }) => {
+
   const { Guests } = useFetchGuests();
   const { availableRooms, availableRoomsLoading, availableRoomsPending } = useAvailableRooms();
 

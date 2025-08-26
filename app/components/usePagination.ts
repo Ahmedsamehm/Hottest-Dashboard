@@ -9,7 +9,7 @@ const usePagination = (fetchAction?: any, path?: string) => {
   const searchParams = useSearchParams();
   const router = useRouter();
   const page = Math.max(1, Number(searchParams.get("page")) || 1);
-  const pageSize = 6;
+  const pageSize = 20;
   const totalPages = Math.ceil(total / pageSize);
 
   const handleIncrement = () => {

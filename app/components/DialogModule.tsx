@@ -8,6 +8,7 @@ type DialogModuleProps = {
   formComponent?: any;
 };
 const DialogModule = ({ tableName, formComponent }: DialogModuleProps) => {
+  "use memo"
   const { isEdit, open, setOpen } = useDashBoard();
 
   return (

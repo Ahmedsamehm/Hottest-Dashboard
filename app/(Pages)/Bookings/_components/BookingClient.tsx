@@ -28,6 +28,8 @@ const BookingClient = () => {
   // --- Data Fetching & Mutations ---
   const { bookings, isPending, getConfirmed, getPending, getRevenue, total } = useFetchAllBookings(page, pageSize, debouncedSearch, filter);
 
+
+
   // Stats data with theme-appropriate colors
   const stats: Stat[] = [
     {

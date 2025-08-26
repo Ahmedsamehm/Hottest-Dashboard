@@ -37,7 +37,7 @@ const useFetchRooms = (page?: number, pageSize?: number, search?: string | numbe
   useEffect(() => {
     queryClient.prefetchQuery({
       queryKey: prefetchKey,
-      queryFn: () => GetAllData<RoomType>({ tableName: "Rooms", page: page + 1 }),
+      queryFn: () => GetAllData<RoomType>({ tableName: "Rooms", page: page + 1, pageSize, search, filter }),
     });
   }, [page, queryClient]);
 

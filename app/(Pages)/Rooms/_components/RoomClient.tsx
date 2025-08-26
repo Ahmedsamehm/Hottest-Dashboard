@@ -25,6 +25,8 @@ const RoomClient = () => {
 
   const { filter, debouncedSearch } = useDashBoard();
   const { page, pageSize } = usePagination();
+
+  
   const { Rooms, isLoading, getAvailableRooms, getOccupiedRooms, total, getAvgRate, isPending } = useFetchRooms(page, pageSize, debouncedSearch, filter);
 
   // Define stats cards data

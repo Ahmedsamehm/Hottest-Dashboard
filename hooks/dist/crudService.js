@@ -48,16 +48,15 @@ exports.GetAllData = function (_a) {
                 case 0:
                     _d.trys.push([0, 7, , 8]);
                     if (!(page && pageSize && page > 0 && pageSize > 0 && filter === "")) return [3 /*break*/, 2];
-                    return [4 /*yield*/, axios_1["default"].get("/apis/" + tableName + "?page=" + page + "&pageSize=" + pageSize + "&search=" + search)];
+                    return [4 /*yield*/, axios_1["default"].get("/apis/" + tableName + "?page=" + page + "&pageSize=" + pageSize + "&search=" + (search !== null && search !== void 0 ? search : "") + "&filter=")];
                 case 1:
                     data = (_d.sent()).data;
                     return [2 /*return*/, data !== null && data !== void 0 ? data : []];
                 case 2:
-                    if (!filter) return [3 /*break*/, 4];
-                    return [4 /*yield*/, axios_1["default"].get("/apis/" + tableName + "?page=" + page + "&pageSize=" + pageSize + "?&filter=" + filter)];
+                    if (!(filter && page && pageSize)) return [3 /*break*/, 4];
+                    return [4 /*yield*/, axios_1["default"].get("/apis/" + tableName + "?page=" + page + "&pageSize=" + pageSize + "&filter=" + filter + "&search=" + (search !== null && search !== void 0 ? search : ""))];
                 case 3:
                     data = (_d.sent()).data;
-                    console.log(data);
                     return [2 /*return*/, data !== null && data !== void 0 ? data : []];
                 case 4:
                     if (!tableName) return [3 /*break*/, 6];

@@ -8,8 +8,6 @@ const useUpdateBooking = () => {
   const { update, isUpdating } = useUpdateData<BookingResponse>({
     mutationKey: "Booking",
     updateFun: ({ tableName, id, formData }) => {
-
-
       return UpdateData({ id, formData, tableName });
     },
     queryKey: "Booking",

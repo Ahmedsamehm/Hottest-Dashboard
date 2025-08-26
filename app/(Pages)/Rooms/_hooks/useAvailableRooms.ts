@@ -3,6 +3,7 @@ import { RoomType } from "../_types/types";
 import { fetchAvailableRooms } from "../_services/crudService";
 
 const useAvailableRooms = () => {
+  "use memo";
   const queryKey = ["available_rooms"];
   const {
     data: availableRooms,
