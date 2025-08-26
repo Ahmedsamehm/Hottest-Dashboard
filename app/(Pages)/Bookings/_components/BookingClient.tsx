@@ -19,7 +19,7 @@ import FormComponent from "./formComponent";
 import { useDashBoard } from "@/app/context/dashBoardContext";
 import BookingTable from "./BookingTable";
 
-const BookingClient = () => {
+export const BookingClient = () => {
   "use memo";
   const { filter, debouncedSearch } = useDashBoard();
 
@@ -74,5 +74,3 @@ const BookingClient = () => {
     </div>
   );
 };
-
-export default BookingClient;
