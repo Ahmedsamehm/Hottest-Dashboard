@@ -102,11 +102,12 @@ When they move to page 2, page 3 gets cached, and so on.
 
 - **🔒 Authentication & Route Protection**
 
-- I implemented **Next.js middleware** to protect routes and ensure that only authorized staff can access certain pages.
+  - I implemented **Next.js middleware** to protect routes and ensure that only authorized staff can access certain pages.
 
-- Role-based access control for admins and regular staff
-- Secured sensitive pages like analytics and booking management
-- Users without proper permissions are redirected to the login page
+  - Role-based access control for admins and regular staff
+  - Secured sensitive pages like analytics and booking management
+  - Users without proper permissions are redirected to the login page
+
 
 ---
 ## 📂 Folder Structure
