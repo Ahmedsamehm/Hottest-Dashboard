@@ -10,7 +10,6 @@ import useAddBooking from "../_hooks/useAddBooking";
 import BookingForm from "./BookingForm";
 
 const FormComponent = () => {
-
   const { bookings } = useFetchAllBookings();
   const { isUpdating, update } = useUpdateBooking();
   const { isEdit, editId: id, setOpen } = useDashBoard();

@@ -16,7 +16,6 @@ var formComponent_1 = require("./formComponent");
 var dashBoardContext_1 = require("@/app/context/dashBoardContext");
 var BookingTable_1 = require("./BookingTable");
 var BookingClient = function () {
-    "use memo";
     var _a;
     var _b = dashBoardContext_1.useDashBoard(), filter = _b.filter, debouncedSearch = _b.debouncedSearch;
     var _c = usePagination_1["default"](), page = _c.page, pageSize = _c.pageSize;
