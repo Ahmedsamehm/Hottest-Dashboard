@@ -20,6 +20,10 @@ export const GetAllData = async <T>({ tableName, page, pageSize, search, filter 
       const { data } = await axios.get<T[]>(`/apis/${tableName}?page=${page}&pageSize=${pageSize}&filter=${filter}&search=${search ?? ""}`);
       return data ?? [];
     }
+    if (search && page && pageSize) {
+      const { data } = await axios.get<T[]>(`/apis/${tableName}?page=${page}&pageSize=${pageSize}&search=${search}`);
+      return data ?? [];
+    }
 
     if (tableName) {
       const { data } = await axios.get<T[]>(`/apis/${tableName}`);

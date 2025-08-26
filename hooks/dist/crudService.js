@@ -41,12 +41,12 @@ var axios_1 = require("axios");
 exports.GetAllData = function (_a) {
     var tableName = _a.tableName, page = _a.page, pageSize = _a.pageSize, search = _a.search, filter = _a.filter;
     return __awaiter(void 0, void 0, Promise, function () {
-        var data, data, data, e_1, message;
+        var data, data, data, data, e_1, message;
         var _b, _c;
         return __generator(this, function (_d) {
             switch (_d.label) {
                 case 0:
-                    _d.trys.push([0, 7, , 8]);
+                    _d.trys.push([0, 9, , 10]);
                     if (!(page && pageSize && page > 0 && pageSize > 0 && filter === "")) return [3 /*break*/, 2];
                     return [4 /*yield*/, axios_1["default"].get("/apis/" + tableName + "?page=" + page + "&pageSize=" + pageSize + "&search=" + (search !== null && search !== void 0 ? search : "") + "&filter=")];
                 case 1:
@@ -59,17 +59,23 @@ exports.GetAllData = function (_a) {
                     data = (_d.sent()).data;
                     return [2 /*return*/, data !== null && data !== void 0 ? data : []];
                 case 4:
-                    if (!tableName) return [3 /*break*/, 6];
-                    return [4 /*yield*/, axios_1["default"].get("/apis/" + tableName)];
+                    if (!(search && page && pageSize)) return [3 /*break*/, 6];
+                    return [4 /*yield*/, axios_1["default"].get("/apis/" + tableName + "?page=" + page + "&pageSize=" + pageSize + "&search=" + search)];
                 case 5:
                     data = (_d.sent()).data;
                     return [2 /*return*/, data !== null && data !== void 0 ? data : []];
-                case 6: return [3 /*break*/, 8];
+                case 6:
+                    if (!tableName) return [3 /*break*/, 8];
+                    return [4 /*yield*/, axios_1["default"].get("/apis/" + tableName)];
                 case 7:
+                    data = (_d.sent()).data;
+                    return [2 /*return*/, data !== null && data !== void 0 ? data : []];
+                case 8: return [3 /*break*/, 10];
+                case 9:
                     e_1 = _d.sent();
                     message = ((_c = (_b = e_1 === null || e_1 === void 0 ? void 0 : e_1.response) === null || _b === void 0 ? void 0 : _b.data) === null || _c === void 0 ? void 0 : _c.error) || (e_1 === null || e_1 === void 0 ? void 0 : e_1.message) || "Failed to get record";
                     throw new Error(message);
-                case 8: return [2 /*return*/];
+                case 10: return [2 /*return*/];
             }
         });
     });

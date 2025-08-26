@@ -11,35 +11,45 @@ const fetchTableData = async ({ page, pageSize, tableName, search, filter }: Pro
   try {
     const supabase = await createClient();
 
-    // Base query
     let query;
 
     if (tableName === "Booking") {
-      query = supabase.from("Booking").select(`*, guest:Guests(fullName, email, phone)`, { count: "exact" }).order("id", { ascending: true });
-    } else {
-      query = supabase.from(tableName).select(`*`, { count: "exact" }).order("id", { ascending: true });
-    }
+      const selectStatement =
+        search && search.trim() !== "" ? `*, guest:Guests!inner(fullName, email, phone)` : `*, guest:Guests(fullName, email, phone)`;
 
-    // search
-    if (search && search.trim() !== "") {
-      if (!isNaN(Number(search))) {
-        query = query.eq("id", Number(search));
-      } else {
+      query = supabase.from("Booking").select(selectStatement, { count: "exact" }).order("id", { ascending: true });
+
+      if (search && search.trim() !== "") {
+        query = query.ilike("guest.fullName", `%${search}%`);
+      }
+
+      if (filter && filter.trim() !== "") {
+        query = query.eq("status", filter);
+      }
+    } else if (tableName === "Guests") {
+      query = supabase.from("Guests").select(`*`, { count: "exact" }).order("id", { ascending: true });
+
+      if (search && search.trim() !== "") {
         query = query.ilike("fullName", `%${search}%`);
       }
-    }
 
-    // filter
-    if (tableName === "Guests") {
       if (filter === "vip") {
         query = query.eq("vip", true);
       } else if (filter === "regular") {
         query = query.eq("vip", false);
       }
-    } else {
+    } else if (tableName === "Rooms") {
+      query = supabase.from("Rooms").select(`*`, { count: "exact" }).order("id", { ascending: true });
+
+      if (search && search.trim() !== "") {
+        query = query.ilike("name", `%${search}%`);
+      }
+
       if (filter && filter.trim() !== "") {
         query = query.eq("status", filter);
       }
+    } else {
+      return { data: [], error: "Invalid table name", count: 0 };
     }
 
     // pagination
@@ -51,17 +61,11 @@ const fetchTableData = async ({ page, pageSize, tableName, search, filter }: Pro
 
     const { data, error, count } = await query;
 
-    if (error) {
-      throw new Error(error.message);
-    }
+    if (error) throw new Error(error.message);
 
     return { data: data ?? [], error: null, count: count ?? 0 };
   } catch (err: any) {
-    return {
-      data: [],
-      error: err.message || "Unexpected error occurred",
-      count: 0,
-    };
+    return { data: [], error: err.message || "Unexpected error occurred", count: 0 };
   }
 };
 

@@ -40,7 +40,7 @@ var server_1 = require("@/lib/supabase/server");
 var fetchTableData = function (_a) {
     var page = _a.page, pageSize = _a.pageSize, tableName = _a.tableName, search = _a.search, filter = _a.filter;
     return __awaiter(void 0, void 0, void 0, function () {
-        var supabase, query, from, to, _b, data, error, count, err_1;
+        var supabase, query, selectStatement, from, to, _b, data, error, count, err_1;
         return __generator(this, function (_c) {
             switch (_c.label) {
                 case 0:
@@ -50,22 +50,20 @@ var fetchTableData = function (_a) {
                     supabase = _c.sent();
                     query = void 0;
                     if (tableName === "Booking") {
-                        query = supabase.from("Booking").select("*, guest:Guests(fullName, email, phone)", { count: "exact" }).order("id", { ascending: true });
-                    }
-                    else {
-                        query = supabase.from(tableName).select("*", { count: "exact" }).order("id", { ascending: true });
-                    }
-                    // search
-                    if (search && search.trim() !== "") {
-                        if (!isNaN(Number(search))) {
-                            query = query.eq("id", Number(search));
+                        selectStatement = search && search.trim() !== "" ? "*, guest:Guests!inner(fullName, email, phone)" : "*, guest:Guests(fullName, email, phone)";
+                        query = supabase.from("Booking").select(selectStatement, { count: "exact" }).order("id", { ascending: true });
+                        if (search && search.trim() !== "") {
+                            query = query.ilike("guest.fullName", "%" + search + "%");
                         }
-                        else {
+                        if (filter && filter.trim() !== "") {
+                            query = query.eq("status", filter);
+                        }
+                    }
+                    else if (tableName === "Guests") {
+                        query = supabase.from("Guests").select("*", { count: "exact" }).order("id", { ascending: true });
+                        if (search && search.trim() !== "") {
                             query = query.ilike("fullName", "%" + search + "%");
                         }
-                    }
-                    // filter
-                    if (tableName === "Guests") {
                         if (filter === "vip") {
                             query = query.eq("vip", true);
                         }
@@ -73,10 +71,17 @@ var fetchTableData = function (_a) {
                             query = query.eq("vip", false);
                         }
                     }
-                    else {
+                    else if (tableName === "Rooms") {
+                        query = supabase.from("Rooms").select("*", { count: "exact" }).order("id", { ascending: true });
+                        if (search && search.trim() !== "") {
+                            query = query.ilike("name", "%" + search + "%");
+                        }
                         if (filter && filter.trim() !== "") {
                             query = query.eq("status", filter);
                         }
+                    }
+                    else {
+                        return [2 /*return*/, { data: [], error: "Invalid table name", count: 0 }];
                     }
                     // pagination
                     if (page && pageSize && page > 0 && pageSize > 0) {
@@ -87,17 +92,12 @@ var fetchTableData = function (_a) {
                     return [4 /*yield*/, query];
                 case 2:
                     _b = _c.sent(), data = _b.data, error = _b.error, count = _b.count;
-                    if (error) {
+                    if (error)
                         throw new Error(error.message);
-                    }
                     return [2 /*return*/, { data: data !== null && data !== void 0 ? data : [], error: null, count: count !== null && count !== void 0 ? count : 0 }];
                 case 3:
                     err_1 = _c.sent();
-                    return [2 /*return*/, {
-                            data: [],
-                            error: err_1.message || "Unexpected error occurred",
-                            count: 0
-                        }];
+                    return [2 /*return*/, { data: [], error: err_1.message || "Unexpected error occurred", count: 0 }];
                 case 4: return [2 /*return*/];
             }
         });
