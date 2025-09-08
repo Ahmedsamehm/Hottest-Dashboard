@@ -14,8 +14,9 @@
 - Track guests’ check-in and check-out dates
 - Mark guests as VIP or regular
 - Record payment status and extra services like meals
+- Switch easily between **light and dark themes**
 
-The goal is to make hotel booking management **easier** and **more dynamic** for  staff 
+The goal is to make hotel booking management **easier** and **more dynamic** for staff.
 
 👉 **Live Demo:** [Hottest Dashboard](https://hottest-dashboard.vercel.app/dashBoard)
 
@@ -23,7 +24,7 @@ The goal is to make hotel booking management **easier** and **more dynamic** for
 
 ## 🧪 Why This Project?
 
-I wanted to learn how to build a fullstack app with **Next.js**, **React**, **TailwindCSS**, and **Supabase**.  
+I wanted to learn how to build a fullstack app with **Next.js**, **React**, **TailwindCSS**, and **Supabase**.
 This dashboard became my playground to practice:
 
 - Building APIs with Next.js (server-side)
@@ -35,53 +36,79 @@ This dashboard became my playground to practice:
 
 ## 🛠 Tech Stack
 
-- **Next.js 15** – frontend & server-side API routes
-- **React 19** – with React Compiler for better performance
-- **TailwindCSS** + **Shadcn UI** – fast, responsive UI styling
-- **Supabase** – authentication, database, and real-time data
-- **React Query** + **Axios** – API calls and state management
-- **Context API** – shared global state
+- **Next.js 15** for the frontend and server-side API routes
+- **React 19** with the React Compiler for better performance
+- **UI & Styling** TailwindCSS, Shadcn UI for fast, responsive UI styling
+- **Supabase** for authentication, database, and real-time data
+- **React Query** + **Axios** for API calls and state management
+- **Context API** for shared global state
 
 ---
 
 ## 🧩 Challenges & Highlights
 
-### 🗄️ Supabase Relationships
+### 🗄️ Working with Supabase Relationships
 
-Creating **relations between tables** and joining them to get complete booking details was challenging.  
-I used AI as my mentor to understand Supabase better and design my schema effectively.
+One of the hardest parts was creating **relations between tables** and joining them to get complete booking details.
+I used AI as my personal mentor to understand Supabase better and figure out the best way to design my schema.
 
 ### 📝 Code Reviews with AI
 
-After each feature, I reviewed the code with AI to ensure I was following **best practices**.  
+After each feature, I reviewed the code with AI to make sure I was following **best practices**.
 This helped me improve performance and write cleaner, more maintainable code.
+
+### ⚡ Smart Caching for Smooth Experience
+
+I implemented caching to reduce requests and make navigation smoother.
+For example, while the user is on page 1, page 2 is cached in the background.
+When they move to page 2, page 3 gets cached, and so on.
 
 ---
 
 ## 🚀 Key Features
 
-### Room Management
-- Add rooms with: room number, capacity, price, description, room type, floor, and status (available, occupied, maintenance)
-- Track last cleaned date
-- Assign amenities: WiFi, parking, breakfast
+- **Room Management**
 
-### Search
-- Global search bar on all pages for quick access to data
+  - Add rooms with: room number, capacity, price, description, room type, floor, and status (available, occupied, maintenance)
+  - Track last cleaned date
+  - Assign amenities: WiFi, parking, breakfast
 
-### Guest Management
-- Add guests with: full name, email, national ID, nationality, phone number, and VIP status
+- **Search and Pagination**
 
-### Booking Management
-- Create, edit, and delete bookings
-- Set booking period and payment method
-- Track payment status (paid before arrival or on check-in)
+  - Global search bar on all pages for quick access to data
+  - Pagination to handle large datasets from the database
 
-### Dashboard Analytics
-- Room status overview
-- Monthly occupancy trends
-- Weekly revenue reports
-- Today's activities summary
- 
+- **Guest Management**
+
+  - Add guests with: full name, email, national ID, nationality, phone number, and VIP status
+
+- **Booking Management**
+
+  - Create, edit, and delete bookings
+  - Set booking period and payment method
+  - Track payment status (paid before arrival or on check-in)
+  - Booking workflow: pending → confirmed → checked out → needs cleaning
+
+- **Dashboard Analytics**
+
+  - Room status overview
+  - Monthly occupancy trends
+  - Weekly revenue reports
+  - Today's activities summary
+
+- **Dark Theme Support**
+
+  - Seamless switch between light and dark themes
+
+- **🔒 Authentication & Route Protection**
+
+  - I implemented **Next.js middleware** to protect routes and ensure that only authorized staff can access certain pages.
+
+  - Role-based access control for admins and regular staff
+  - Secured sensitive pages like analytics and booking management
+  - Users without proper permissions are redirected to the login page
+
+
 ---
 ## 📂 Folder Structure
 ```
