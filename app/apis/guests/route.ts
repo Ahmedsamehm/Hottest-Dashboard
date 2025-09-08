@@ -1,5 +1,4 @@
 import { createClient } from "@/lib/supabase/server";
-
 import { NextResponse } from "next/server";
 
 export async function GET(req: Request) {
@@ -13,23 +12,18 @@ export async function GET(req: Request) {
   const filter = searchParams.get("filter") || "";
 
   try {
-    // Get available rooms using RPC function
-    const { data: rooms, error: rpcError, count: roomCount } = await supabase.rpc("get_available_rooms_simple");
+    let query = supabase.from("Guests").select("*", { count: "exact" }).order("id", { ascending: true });
 
-    if (rpcError) {
-      return NextResponse.json({ error: rpcError.message }, { status: 400 });
-    }
-
-    let query = supabase.from("Rooms").select("*", { count: "exact" }).order("id", { ascending: true });
-
-    // Apply search filter on room name
+    // Apply search filter
     if (search && search.trim() !== "") {
-      query = query.ilike("name", `%${search}%`);
+      query = query.ilike("fullName", `%${search}%`);
     }
 
-    // Apply status filter
-    if (filter && filter.trim() !== "") {
-      query = query.eq("status", filter);
+    // Apply VIP filter
+    if (filter === "vip") {
+      query = query.eq("vip", true);
+    } else if (filter === "regular") {
+      query = query.eq("vip", false);
     }
 
     // Apply pagination
@@ -39,7 +33,7 @@ export async function GET(req: Request) {
       query = query.range(from, to);
     }
 
-    const { data: Rooms, error, count } = await query;
+    const { data: Guests, error, count } = await query;
 
     if (error) {
       return NextResponse.json({ error: error.message }, { status: 400 });
@@ -47,8 +41,7 @@ export async function GET(req: Request) {
 
     return NextResponse.json(
       {
-        data: Rooms ?? [],
-        availableRooms: rooms ?? [],
+        data: Guests ?? [],
         error: null,
         count: count ?? 0,
       },
@@ -72,7 +65,7 @@ export async function POST(request: Request) {
     const { formData } = requestBody;
     if (!requestBody) return;
 
-    const { data, error } = await supabase.from("Rooms").insert(formData).select();
+    const { data, error } = await supabase.from("Guests").insert(formData).select();
 
     if (error) {
       return NextResponse.json({ error: error.message }, { status: 400 });
@@ -92,7 +85,7 @@ export async function PUT(request: Request) {
     const { formData, id } = requestBody;
     if (!requestBody) return;
 
-    const { data, error } = await supabase.from("Rooms").update(formData).eq("id", id).select();
+    const { data, error } = await supabase.from("Guests").update(formData).eq("id", id).select();
 
     if (error) {
       return NextResponse.json({ error: error.message }, { status: 400 });
@@ -113,7 +106,7 @@ export async function DELETE(request: Request) {
 
     const { id } = requestBody;
 
-    const { error } = await supabase.from("Rooms").delete().eq("id", id);
+    const { error } = await supabase.from("Guests").delete().eq("id", id);
 
     if (error) {
       return NextResponse.json({ error: error.message }, { status: 400 });

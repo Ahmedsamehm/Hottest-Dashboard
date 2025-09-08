@@ -14,18 +14,17 @@ const fetchTableData = async ({ page, pageSize, tableName, search, filter }: Pro
     let query;
 
     if (tableName === "Booking") {
-      const selectStatement =
-        search && search.trim() !== "" ? `*, guest:Guests!inner(fullName, email, phone)` : `*, guest:Guests(fullName, email, phone)`;
+      // const selectStatement = search && search.trim() !== "" ? `*, guest:Guests!inner(fullName, email, phone)` : `*, guest:Guests(fullName, email, phone)`;
 
-      query = supabase.from("Booking").select(selectStatement, { count: "exact" }).order("id", { ascending: true });
+      // query = supabase.from("Booking").select(selectStatement, { count: "exact" }).order("id", { ascending: true });
 
-      if (search && search.trim() !== "") {
-        query = query.ilike("guest.fullName", `%${search}%`);
-      }
+      // if (search && search.trim() !== "") {
+      //   query = query.ilike("guest.fullName", `%${search}%`);
+      // }
 
-      if (filter && filter.trim() !== "") {
-        query = query.eq("status", filter);
-      }
+      // if (filter && filter.trim() !== "") {
+      //   query = query.eq("status", filter);
+      // }
     } else if (tableName === "Guests") {
       query = supabase.from("Guests").select(`*`, { count: "exact" }).order("id", { ascending: true });
 

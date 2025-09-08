@@ -1,10 +1,10 @@
 import { useGetData } from "@/hooks/useQuery";
 
-import { GetAllData } from "@/hooks/crudService";
 import useCalculation from "@/hooks/useCalculation";
 import { useQueryClient } from "@tanstack/react-query";
 import { useEffect } from "react";
 import { GuestType } from "../_components/GuestsClient";
+import { GetAllGuests } from "../_services/guestServices";
 
 const useFetchGuests = (page?: number, pageSize?: number, search?: string, filter?: string) => {
   "use memo";
@@ -31,7 +31,7 @@ const useFetchGuests = (page?: number, pageSize?: number, search?: string, filte
     isPending,
   } = useGetData<GuestType[]>({
     queryKey,
-    getFun: () => GetAllData({ tableName: "Guests", page, pageSize, search, filter }),
+    getFun: () => GetAllGuests({ page, pageSize, search, filter }),
     tableName: "Guests",
   });
 
@@ -39,7 +39,7 @@ const useFetchGuests = (page?: number, pageSize?: number, search?: string, filte
     if (page != null) {
       queryClient.prefetchQuery({
         queryKey: prefetchKey,
-        queryFn: () => GetAllData({ tableName: "Guests", page: page + 1, pageSize, search, filter }),
+        queryFn: () => GetAllGuests({ page: page + 1, pageSize, search, filter }),
       });
     }
   }, [page, queryClient]);

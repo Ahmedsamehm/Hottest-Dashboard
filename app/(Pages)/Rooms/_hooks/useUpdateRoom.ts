@@ -1,6 +1,7 @@
 import { useUpdateData } from "@/hooks/useQuery";
 import { RoomType } from "../_types/types";
-import { UpdateData } from "@/hooks/crudService";
+
+import { UpdateRoom } from "../_services/crudService";
 
 const useUpdateRoom = () => {
   const message = {
@@ -8,7 +9,7 @@ const useUpdateRoom = () => {
   };
   const { update, isUpdating } = useUpdateData<RoomType>({
     mutationKey: "updateRoom",
-    updateFun: ({ tableName, id, formData }) => UpdateData({ id, formData, tableName }),
+    updateFun: ({ id, formData }) => UpdateRoom({ id, formData }),
     queryKey: "Rooms",
     message,
   });

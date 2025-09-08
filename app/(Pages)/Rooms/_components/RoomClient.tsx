@@ -26,7 +26,6 @@ const RoomClient = () => {
   const { filter, debouncedSearch } = useDashBoard();
   const { page, pageSize } = usePagination();
 
-  
   const { Rooms, isLoading, getAvailableRooms, getOccupiedRooms, total, getAvgRate, isPending } = useFetchRooms(page, pageSize, debouncedSearch, filter);
 
   // Define stats cards data
@@ -54,7 +53,7 @@ const RoomClient = () => {
         <StatsCards stats={stats} />
         <SearchAndFilter filterOptions={roomOptions} placeholder="Search by room name" type="text" />
 
-        <CardRoom Rooms={Rooms?.data || []} isPending={isPending} />
+        <CardRoom Rooms={Rooms || []} isPending={isPending} />
         {/* <CardRoom /> */}
         <PaginationComponent fetchAction={Rooms} />
       </div>

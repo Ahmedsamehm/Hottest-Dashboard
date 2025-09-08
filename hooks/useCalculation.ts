@@ -2,6 +2,8 @@ function useCalculation<T extends { status?: string; price?: number | undefined;
   "use memo";
   if (!list) list = [];
 
+  console.log(list);
+
   const total = list?.count ?? 0;
   const getList = list?.data ?? [];
 

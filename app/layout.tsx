@@ -33,22 +33,20 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <QueryProvider>
-          <ProtectedRoutes>
-            <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange enableColorScheme>
-              <SidebarProvider>
-                <aside>
-                  <SideBar />
-                </aside>
-                <main className="flex-1 overflow-hidden">
-                  <DashBoardProvider>
-                    {children}
-                    <SpeedInsights />
-                  </DashBoardProvider>
-                </main>
-                <Toaster />
-              </SidebarProvider>
-            </ThemeProvider>
-          </ProtectedRoutes>
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange enableColorScheme>
+            <SidebarProvider>
+              <aside>
+                <SideBar />
+              </aside>
+              <main className="flex-1 overflow-hidden">
+                <DashBoardProvider>
+                  {children}
+                  <SpeedInsights />
+                </DashBoardProvider>
+              </main>
+              <Toaster />
+            </SidebarProvider>
+          </ThemeProvider>
         </QueryProvider>
       </body>
     </html>

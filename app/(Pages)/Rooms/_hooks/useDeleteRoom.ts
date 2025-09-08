@@ -1,5 +1,6 @@
 import { useDeleteData } from "@/hooks/useQuery";
 import { DeleteData } from "@/hooks/crudService";
+import { DeleteRoom } from "../_services/crudService";
 
 const useDeleteRoom = () => {
   const message = {
@@ -7,7 +8,7 @@ const useDeleteRoom = () => {
   };
   const { deleteItem, isDeleting } = useDeleteData({
     mutationKey: "deleteRoom",
-    deleteFun: DeleteData,
+    deleteFun: ({ id }: { id: number }) => DeleteRoom(id),
     queryKey: "Rooms",
     tableName: "Rooms",
     message,

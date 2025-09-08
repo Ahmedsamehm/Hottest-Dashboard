@@ -10,7 +10,6 @@ import { useDashBoard } from "@/app/context/dashBoardContext";
 import Loading from "@/app/components/shared/ui/Loading";
 
 const FormComponent = () => {
-
   const { Rooms, isPending } = useFetchRooms();
   const { update, isUpdating } = useUpdateRoom();
   const { isEdit, editId: id, setOpen } = useDashBoard();
@@ -30,7 +29,7 @@ const FormComponent = () => {
     if (isEdit && id) {
       const updatedFields = Object.fromEntries(Object.entries(formData).filter(([key, value]) => value !== (selected as any)[key]));
 
-      update({ id, formData: updatedFields, tableName: "Rooms" });
+      update({ id, formData: updatedFields });
       setOpen(false);
     } else {
       AddRoom({ formData });

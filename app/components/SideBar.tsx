@@ -43,7 +43,7 @@ const menuItems = [
 
 const SideBar = () => {
   "use memo";
-  const { user, isPending: userPending } = useGetUser();
+  const { isPending: userPending } = useGetUser();
   const { Logout, isPending } = useLogout();
 
   const handleLogout = async () => {
@@ -51,7 +51,7 @@ const SideBar = () => {
   };
   if (userPending) return <SkeletonComponent />;
   return (
-    <Sidebar className={`border-r border-gray-200 bg-background ${!user ? "invisible" : "visible"}`}>
+    <Sidebar className={`border-r border-gray-200 bg-background`}>
       <ModeToggle />
       <SidebarHeader className="border-b border-gray-200 p-6">
         <div className="flex items-center gap-3">

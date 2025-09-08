@@ -1,13 +1,14 @@
 import { useAddData } from "@/hooks/useQuery";
 
 import { BookingResponse } from "../_types/types";
-import { AddData } from "@/hooks/crudService";
+
+import { CreateBooking } from "../_services/bookingService";
 
 const useAddBooking = () => {
   const message = { onSuccess: "Booking added successfully", onError: "Something went wrong" };
   const { add: AddRoom, isAdding } = useAddData<BookingResponse>({
     mutationKey: "Booking",
-    addFun: AddData,
+    addFun: ({ formData }) => CreateBooking(formData),
     queryKey: "Booking",
     tableName: "Booking",
     message,

@@ -14,6 +14,8 @@ const StatsCards = ({ stats }: { stats: Stat[] }) => {
   "use memo";
   const isEven = stats.length === 2;
 
+
+  
   return isEven ? (
     <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-2">
       {stats.map((stat) => (
@@ -45,9 +47,7 @@ const StatsCards = ({ stats }: { stats: Stat[] }) => {
             </div>
             <div className="space-y-1">
               <p className="text-sm font-medium text-muted-foreground">{stat.title}</p>
-              <p className="text-2xl font-bold text-foreground">
-                {Math.floor(stat?.value as number)}
-              </p>
+              <p className="text-2xl font-bold text-foreground">{Math.floor(stat?.value as number)}</p>
               {stat.subtitle && <p className="text-xs text-muted-foreground">{stat.subtitle}</p>}
             </div>
           </CardContent>

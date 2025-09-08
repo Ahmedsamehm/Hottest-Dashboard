@@ -1,6 +1,7 @@
 import { useAddData } from "@/hooks/useQuery";
 import { GuestType } from "../_components/GuestsClient";
-import { AddData } from "@/hooks/crudService";
+
+import { CreateGuest } from "../_services/guestServices";
 
 const useAddGuest = () => {
   const message = { onError: "duplicate Guest(name)", onSuccess: "Guest added successfully" };
@@ -11,7 +12,7 @@ const useAddGuest = () => {
     resetAdd,
   } = useAddData<GuestType>({
     mutationKey: "addGuest",
-    addFun: AddData,
+    addFun: ({ formData }) => CreateGuest(formData),
     queryKey: "Guests",
     tableName: "Guests",
     message,

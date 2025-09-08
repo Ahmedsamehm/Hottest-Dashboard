@@ -1,10 +1,11 @@
-import { DeleteData } from "@/hooks/crudService";
+
 import { useDeleteData } from "@/hooks/useQuery";
+import { DeleteBooking } from "../_services/bookingService";
 
 const useDeleteBooking = () => {
   const { deleteItem, isDeleting } = useDeleteData({
     mutationKey: "Booking",
-    deleteFun: (id: number) => DeleteData(id, "Booking"),
+    deleteFun: ({ id }: { id: number }) => DeleteBooking(id),
     queryKey: "Booking",
     tableName: "Booking",
     message: { onSuccessDelete: "Booking deleted successfully" },

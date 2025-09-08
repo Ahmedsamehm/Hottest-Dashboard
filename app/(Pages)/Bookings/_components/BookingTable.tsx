@@ -35,7 +35,7 @@ const BookingTable: React.FC<BookingTableProps> = ({ bookings, isLoading }) => {
             </TableRow>
           </TableBody>
         ) : (
-          <TableBody >
+          <TableBody>
             {bookings?.map((list: BookingResponse) => (
               <TableRow key={list.id} className="border-border">
                 <TableCell className="font-medium text-foreground">BK{list.id}</TableCell>

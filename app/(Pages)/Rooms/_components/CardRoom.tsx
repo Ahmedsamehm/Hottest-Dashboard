@@ -15,11 +15,11 @@ const CardRoom = ({ Rooms, isPending }) => {
   const { getStatusColor, getAmenityIcon } = useDashBoard();
   const { deleteItem, isDeleting } = useDeleteRoom();
 
-  if (isPending) return <SkeletonComponent />
+  if (isPending) return <SkeletonComponent />;
   return (
     <section>
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 mx-auto  max-h-[70vh] overflow-y-auto  ">
-        {Rooms?.map((room: RoomType) => (
+        {Rooms?.data?.map((room: RoomType) => (
           <Card key={room.id} className=" light:border-gray-300 ">
             <CardHeader className="pb-4">
               <div className="flex items-start justify-between">

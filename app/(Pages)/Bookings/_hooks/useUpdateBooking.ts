@@ -1,14 +1,14 @@
-import { UpdateData } from "@/hooks/crudService";
 import { useUpdateData } from "@/hooks/useQuery";
 
 import { BookingResponse } from "../_types/types";
+import { UpdateBooking } from "../_services/bookingService";
 
 const useUpdateBooking = () => {
   const message = { onSuccessUpdate: "Booking updated successfully" };
   const { update, isUpdating } = useUpdateData<BookingResponse>({
     mutationKey: "Booking",
-    updateFun: ({ tableName, id, formData }) => {
-      return UpdateData({ id, formData, tableName });
+    updateFun: ({ id, formData }) => {
+      return UpdateBooking({ id, formData });
     },
     queryKey: "Booking",
     message,
